@@ -3,14 +3,17 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 require("dotenv").config({ path: "./.env" })
+const path = require("path")
 const app = express()
 
 // middlewares
 app.use(express.json())
 app.use(express.static("uploads"))
+app.use(express.static("dist"))
 app.use(cookieParser())
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://holiday-9j9u.onrender.com"
+    ,
     credentials: true
 }))
 // route
