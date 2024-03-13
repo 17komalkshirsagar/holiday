@@ -20,7 +20,8 @@ app.use("/api/public", require("./routes/publicRoute"))
 app.use("/api/order", require("./routes/orderRoute"))
 // 404
 app.use("*", (req, res) => {
-    res.status(404).json({ message: "Resource Not Found" })
+    res.sendFile(path.json(__dirname, "dist", "index.html"))
+    // res.status(404).json({ message: "Resource Not Found" })
 })
 // error handler
 app.use((err, req, res, next) => {
@@ -33,3 +34,6 @@ mongoose.connection.once("open", () => {
     console.log("Mongo Connected")
     app.listen(process.env.PORT, console.log("SERVER RUNNING"))
 })
+
+
+// mongodb+srv://komalkshirsagar32009:rRxfOQJVUcu2lXMX@cluster0.g5tlf77.mongodb.net/?retryWrites=true&w=majority
